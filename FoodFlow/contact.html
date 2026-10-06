@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact FoodFlow – reach out for support, partnerships, or general enquiries. We're here to help 24/7." />
+  <title>Contact – FoodFlow</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo" aria-label="FoodFlow Home">
+          <div class="logo-icon" aria-hidden="true">🍕</div>
+          <span class="highlight">Food</span><span>Flow</span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="orders.html">Orders</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="cart-btn" id="nav-cart-btn" aria-label="View cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            Cart
+            <span class="cart-count hidden" id="cart-count-nav" aria-label="Items in cart">0</span>
+          </a>
+          <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobile-menu" role="menu">
+        <a href="index.html" role="menuitem">Home</a>
+        <a href="menu.html" role="menuitem">Menu</a>
+        <a href="orders.html" role="menuitem">My Orders</a>
+        <a href="about.html" role="menuitem">About</a>
+        <a href="contact.html" role="menuitem">Contact</a>
+        <a href="cart.html" role="menuitem" style="color:var(--primary);font-weight:700">🛒 Cart</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-label="Contact page header">
+    <h1>Get in <span style="color:var(--primary-light)">Touch</span></h1>
+    <p>We'd love to hear from you. Send us a message and we'll respond within 24 hours.</p>
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span aria-current="page">Contact</span>
+    </div>
+  </section>
+
+  <!-- CONTACT CONTENT -->
+  <section class="section" aria-label="Contact form and information">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- INFO CARD -->
+        <aside class="contact-info-card" aria-label="Contact information">
+          <h3>Contact Information</h3>
+          <p>Reach out to us through any of the channels below. We're available 24/7 for urgent support.</p>
+
+          <div class="contact-item">
+            <div class="contact-item-icon" aria-hidden="true">📍</div>
+            <div class="contact-item-text">
+              <div class="title">Address</div>
+              <div class="value">FoodFlow HQ, 4th Floor, Tech Park,<br/>Hitech City, Hyderabad – 500081</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon" aria-hidden="true">📞</div>
+            <div class="contact-item-text">
+              <div class="title">Phone</div>
+              <div class="value">+91 98765 43210</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon" aria-hidden="true">✉️</div>
+            <div class="contact-item-text">
+              <div class="title">Email</div>
+              <div class="value">support@foodflow.in</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon" aria-hidden="true">🕐</div>
+            <div class="contact-item-text">
+              <div class="title">Support Hours</div>
+              <div class="value">24 × 7 – Always Available</div>
+            </div>
+          </div>
+
+          <div class="social-links" aria-label="Social media links">
+            <a href="#" class="social-link" aria-label="FoodFlow on Instagram">📸</a>
+            <a href="#" class="social-link" aria-label="FoodFlow on Twitter">🐦</a>
+            <a href="#" class="social-link" aria-label="FoodFlow on Facebook">📘</a>
+            <a href="#" class="social-link" aria-label="FoodFlow on LinkedIn">💼</a>
+          </div>
+        </aside>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form-card">
+          <h2>Send Us a Message</h2>
+          <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+
+          <form id="contact-form" novalidate aria-label="Contact form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">Full Name *</label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  placeholder="Your full name"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email Address *</label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  placeholder="your@email.com"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-phone">Phone Number</label>
+              <input
+                type="tel"
+                id="contact-phone"
+                name="phone"
+                placeholder="+91 XXXXX XXXXX"
+                autocomplete="tel"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject">Subject *</label>
+              <select id="contact-subject" name="subject" required aria-label="Select subject">
+                <option value="">Select a subject...</option>
+                <option value="order">Order Issue</option>
+                <option value="delivery">Delivery Problem</option>
+                <option value="payment">Payment Query</option>
+                <option value="restaurant">Restaurant Partnership</option>
+                <option value="career">Career Enquiry</option>
+                <option value="feedback">General Feedback</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Message *</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                placeholder="Tell us how we can help you..."
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" id="contact-submit-btn" style="width:100%;justify-content:center;font-size:1rem;padding:14px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section section-alt" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title" id="faq-heading">Frequently Asked <span class="accent">Questions</span></h2>
+      </div>
+      <div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
+
+        <details style="background:white;border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow-sm)">
+          <summary style="padding:18px 22px;font-weight:700;cursor:pointer;list-style:none;color:var(--text-dark);display:flex;justify-content:space-between;align-items:center">
+            How long does delivery take?
+            <span style="color:var(--primary);font-size:1.2rem" aria-hidden="true">+</span>
+          </summary>
+          <div style="padding:0 22px 18px;color:var(--text-medium);font-size:0.92rem;line-height:1.7">
+            Most orders are delivered within 30–45 minutes. Delivery time depends on your location, restaurant preparation time, and traffic conditions.
+          </div>
+        </details>
+
+        <details style="background:white;border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow-sm)">
+          <summary style="padding:18px 22px;font-weight:700;cursor:pointer;list-style:none;color:var(--text-dark);display:flex;justify-content:space-between;align-items:center">
+            What is the delivery fee?
+            <span style="color:var(--primary);font-size:1.2rem" aria-hidden="true">+</span>
+          </summary>
+          <div style="padding:0 22px 18px;color:var(--text-medium);font-size:0.92rem;line-height:1.7">
+            We charge ₹40 delivery fee for orders below ₹500. Orders above ₹500 enjoy FREE delivery. Orders above ₹600 also get an automatic 5% discount!
+          </div>
+        </details>
+
+        <details style="background:white;border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow-sm)">
+          <summary style="padding:18px 22px;font-weight:700;cursor:pointer;list-style:none;color:var(--text-dark);display:flex;justify-content:space-between;align-items:center">
+            What payment methods do you accept?
+            <span style="color:var(--primary);font-size:1.2rem" aria-hidden="true">+</span>
+          </summary>
+          <div style="padding:0 22px 18px;color:var(--text-medium);font-size:0.92rem;line-height:1.7">
+            We accept Cash on Delivery, UPI (GPay, PhonePe, Paytm), and Credit/Debit cards. Choose the most convenient option during checkout.
+          </div>
+        </details>
+
+        <details style="background:white;border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow-sm)">
+          <summary style="padding:18px 22px;font-weight:700;cursor:pointer;list-style:none;color:var(--text-dark);display:flex;justify-content:space-between;align-items:center">
+            Can I cancel or modify my order?
+            <span style="color:var(--primary);font-size:1.2rem" aria-hidden="true">+</span>
+          </summary>
+          <div style="padding:0 22px 18px;color:var(--text-medium);font-size:0.92rem;line-height:1.7">
+            You can cancel orders within 2 minutes of placing them. Once the restaurant begins preparation, cancellations may not be possible. Contact our support team for urgent changes.
+          </div>
+        </details>
+
+        <details style="background:white;border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow-sm)">
+          <summary style="padding:18px 22px;font-weight:700;cursor:pointer;list-style:none;color:var(--text-dark);display:flex;justify-content:space-between;align-items:center">
+            How do I become a restaurant partner?
+            <span style="color:var(--primary);font-size:1.2rem" aria-hidden="true">+</span>
+          </summary>
+          <div style="padding:0 22px 18px;color:var(--text-medium);font-size:0.92rem;line-height:1.7">
+            We'd love to have you on board! Send us an email at partners@foodflow.in or fill in the contact form above selecting "Restaurant Partnership" as the subject.
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><span aria-hidden="true">🍕</span>FoodFlow</div>
+          <p>Your favourite food, delivered fast. Connecting you with the best restaurants in your city.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" aria-label="Careers">Careers</a></li>
+            <li><a href="#" aria-label="Blog">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+            <li><a href="#" aria-label="Terms">Terms of Service</a></li>
+            <li><a href="#" aria-label="Partner">Partner With Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 FoodFlow. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll to top">↑</button>
+  <div id="toast-container" class="toast-container" role="alert" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about FoodFlow – our story, mission, team, and why we're India's favourite food delivery platform." />
+  <title>About Us – FoodFlow</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo" aria-label="FoodFlow Home">
+          <div class="logo-icon" aria-hidden="true">🍕</div>
+          <span class="highlight">Food</span><span>Flow</span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="orders.html">Orders</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="cart-btn" id="nav-cart-btn" aria-label="View cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            Cart
+            <span class="cart-count hidden" id="cart-count-nav" aria-label="Items in cart">0</span>
+          </a>
+          <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobile-menu" role="menu">
+        <a href="index.html" role="menuitem">Home</a>
+        <a href="menu.html" role="menuitem">Menu</a>
+        <a href="orders.html" role="menuitem">My Orders</a>
+        <a href="about.html" role="menuitem">About</a>
+        <a href="contact.html" role="menuitem">Contact</a>
+        <a href="cart.html" role="menuitem" style="color:var(--primary);font-weight:700">🛒 Cart</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ABOUT HERO -->
+  <section class="about-hero" aria-label="About FoodFlow header">
+    <h1>About <span style="color:var(--primary-light)">FoodFlow</span></h1>
+    <p>On a mission to make great food accessible to everyone, everywhere.</p>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="section" aria-labelledby="story-heading">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=700&q=80"
+            alt="FoodFlow team at work"
+            loading="lazy"
+          />
+        </div>
+        <div class="about-text">
+          <span class="section-tag">Our Story</span>
+          <h2 id="story-heading">Born from a Passion for <span style="color:var(--primary)">Great Food</span></h2>
+          <p>FoodFlow was founded in 2022 by a group of college students who were tired of waiting hours for mediocre delivery from unreliable apps. We wanted something better — faster, tastier, more reliable.</p>
+          <p>Starting with just 5 restaurant partners in Hyderabad, FoodFlow has grown to partner with 500+ restaurants across 200+ cities. Our platform makes it effortless to discover new restaurants, order your favourite meals, and get them delivered in record time.</p>
+          <p>We believe food is more than sustenance — it's culture, memory, and joy. Our goal is to bring restaurant-quality experiences to your home, every single day.</p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <h4>⚡ Fast Delivery</h4>
+              <p>Average delivery in under 45 minutes, guaranteed.</p>
+            </div>
+            <div class="highlight-item">
+              <h4>🏆 Quality First</h4>
+              <p>Every partner is vetted for quality and hygiene.</p>
+            </div>
+            <div class="highlight-item">
+              <h4>🌱 Sustainable</h4>
+              <p>Eco-friendly packaging with all our deliveries.</p>
+            </div>
+            <div class="highlight-item">
+              <h4>❤️ Community</h4>
+              <p>Supporting local restaurants and delivery partners.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section section-alt" aria-labelledby="stats-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">By the Numbers</span>
+        <h2 class="section-title" id="stats-heading">FoodFlow <span class="accent">in Numbers</span></h2>
+      </div>
+      <div class="stats-row" role="list">
+        <div class="stat-box" role="listitem">
+          <span class="number">500+</span>
+          <span class="label">Restaurant Partners</span>
+        </div>
+        <div class="stat-box" role="listitem">
+          <span class="number">10K+</span>
+          <span class="label">Happy Customers</span>
+        </div>
+        <div class="stat-box" role="listitem">
+          <span class="number">200+</span>
+          <span class="label">Cities Served</span>
+        </div>
+        <div class="stat-box" role="listitem">
+          <span class="number">4.8★</span>
+          <span class="label">Average Rating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION & VALUES -->
+  <section class="section" aria-labelledby="mission-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Mission</span>
+        <h2 class="section-title" id="mission-heading">What <span class="accent">Drives Us</span></h2>
+        <p class="section-subtitle">Every decision we make is guided by our core values and commitment to our customers.</p>
+      </div>
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🎯</div>
+          <h3>Customer First</h3>
+          <p>Every feature, every decision — we ask: does this make the customer experience better?</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🤝</div>
+          <h3>Partner Success</h3>
+          <p>Our restaurant partners' success is our success. We grow together.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🌍</div>
+          <h3>Community Impact</h3>
+          <p>Creating sustainable livelihoods for thousands of delivery partners across India.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">💡</div>
+          <h3>Innovation</h3>
+          <p>Constantly building smarter solutions for faster, safer, better food delivery.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section section-alt" aria-labelledby="team-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Team</span>
+        <h2 class="section-title" id="team-heading">Meet the <span class="accent">FoodFlow Team</span></h2>
+        <p class="section-subtitle">The passionate people building the future of food delivery.</p>
+      </div>
+      <div class="team-grid">
+        <article class="team-card">
+          <img
+            class="team-avatar"
+            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80"
+            alt="Arjun Mehta, CEO"
+            loading="lazy"
+          />
+          <div class="team-name">Arjun Mehta</div>
+          <div class="team-role">Co-Founder & CEO</div>
+        </article>
+        <article class="team-card">
+          <img
+            class="team-avatar"
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80"
+            alt="Sneha Reddy, CTO"
+            loading="lazy"
+          />
+          <div class="team-name">Sneha Reddy</div>
+          <div class="team-role">Co-Founder & CTO</div>
+        </article>
+        <article class="team-card">
+          <img
+            class="team-avatar"
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80"
+            alt="Rohan Verma, COO"
+            loading="lazy"
+          />
+          <div class="team-name">Rohan Verma</div>
+          <div class="team-role">Chief Operations Officer</div>
+        </article>
+        <article class="team-card">
+          <img
+            class="team-avatar"
+            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80"
+            alt="Kavya Nair, Head of Design"
+            loading="lazy"
+          />
+          <div class="team-name">Kavya Nair</div>
+          <div class="team-role">Head of Design</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" aria-label="Call to action">
+    <div class="container">
+      <h2>Join the FoodFlow Family</h2>
+      <p>Whether you're a food lover or a restaurant owner — FoodFlow has a place for you.</p>
+      <a href="menu.html" class="btn-white" id="join-btn">Order Now</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><span aria-hidden="true">🍕</span>FoodFlow</div>
+          <p>Your favourite food, delivered fast. Connecting you with the best restaurants in your city.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" aria-label="Careers">Careers</a></li>
+            <li><a href="#" aria-label="Blog">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+            <li><a href="#" aria-label="Terms">Terms of Service</a></li>
+            <li><a href="#" aria-label="Partner">Partner With Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 FoodFlow. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll to top">↑</button>
+  <div id="toast-container" class="toast-container" role="alert" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

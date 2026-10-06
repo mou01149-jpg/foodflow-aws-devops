@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your FoodFlow cart – review your order, adjust quantities, and checkout securely." />
+  <title>Cart – FoodFlow</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo" aria-label="FoodFlow Home">
+          <div class="logo-icon" aria-hidden="true">🍕</div>
+          <span class="highlight">Food</span><span>Flow</span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="orders.html">Orders</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="cart-btn active" id="nav-cart-btn" aria-label="View cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            Cart
+            <span class="cart-count hidden" id="cart-count-nav" aria-label="Items in cart">0</span>
+          </a>
+          <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobile-menu" role="menu">
+        <a href="index.html" role="menuitem">Home</a>
+        <a href="menu.html" role="menuitem">Menu</a>
+        <a href="orders.html" role="menuitem">My Orders</a>
+        <a href="about.html" role="menuitem">About</a>
+        <a href="contact.html" role="menuitem">Contact</a>
+        <a href="cart.html" role="menuitem" style="color:var(--primary);font-weight:700">🛒 Cart</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-label="Cart page header">
+    <h1>Your <span style="color:var(--primary-light)">Cart</span></h1>
+    <p>Review your order and proceed to checkout</p>
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span aria-current="page">Cart</span>
+    </div>
+  </section>
+
+  <!-- CART CONTENT -->
+  <section class="section" aria-label="Shopping cart">
+    <div class="container">
+
+      <!-- EMPTY CART -->
+      <div class="cart-empty" id="cart-empty" role="status">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <h3>Your cart is empty</h3>
+        <p>Looks like you haven't added anything yet. Browse our menu and find something you love!</p>
+        <a href="menu.html" class="btn-primary" id="browse-menu-btn">
+          Browse Menu
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- FULL CART -->
+      <div id="cart-full" class="hidden">
+        <div class="cart-layout">
+
+          <!-- LEFT: Items -->
+          <div class="cart-items-section">
+            <div class="cart-section-header">
+              <h2 class="cart-section-title" id="cart-count-header">Cart Items</h2>
+              <button class="clear-cart-btn" id="clear-cart-btn" aria-label="Clear all items from cart">Clear Cart</button>
+            </div>
+
+            <!-- Offer strip -->
+            <div style="background:linear-gradient(135deg,rgba(255,69,0,0.06),rgba(255,140,0,0.06));border:1px solid rgba(255,69,0,0.15);border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:0.85rem;color:var(--text-medium);display:flex;align-items:center;gap:8px">
+              <span style="font-size:1.1rem" aria-hidden="true">🎁</span>
+              <span id="delivery-note">Add ₹500 worth of items for free delivery</span>
+            </div>
+
+            <div id="cart-items" role="list" aria-label="Cart items">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- RIGHT: Summary -->
+          <aside class="cart-summary" aria-label="Order summary">
+            <div class="cart-summary-header">
+              <h3>Order Summary</h3>
+            </div>
+            <div class="cart-summary-body">
+              <div class="summary-row">
+                <span class="label">Subtotal</span>
+                <span class="value" id="cart-subtotal">₹0</span>
+              </div>
+              <div class="summary-row">
+                <span class="label">Delivery Fee</span>
+                <span class="value" id="cart-delivery">₹40</span>
+              </div>
+              <div class="summary-row discount" id="discount-row" style="display:none">
+                <span class="label">Discount (5%)</span>
+                <span class="value" id="cart-discount">₹0</span>
+              </div>
+              <div class="summary-row total">
+                <span class="label">Total</span>
+                <span class="value" id="cart-total">₹0</span>
+              </div>
+
+              <div style="margin-top:16px;padding:12px;background:var(--bg-section);border-radius:10px;font-size:0.8rem;color:var(--text-medium)">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+                  <span aria-hidden="true">✅</span> Free delivery on orders ≥ ₹500
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+                  <span aria-hidden="true">✅</span> 5% discount on orders ≥ ₹600
+                </div>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <span aria-hidden="true">✅</span> Estimated delivery: 30-45 min
+                </div>
+              </div>
+
+              <button class="place-order-btn" id="place-order-btn" aria-label="Proceed to checkout">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                Proceed to Checkout
+              </button>
+
+              <div style="text-align:center;margin-top:14px">
+                <a href="menu.html" style="font-size:0.82rem;color:var(--primary);font-weight:600">
+                  + Add more items
+                </a>
+              </div>
+
+              <!-- Payment icons -->
+              <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);text-align:center">
+                <p style="font-size:0.75rem;color:var(--text-light);margin-bottom:8px">Accepted Payments</p>
+                <div style="display:flex;justify-content:center;gap:12px;font-size:1.4rem" aria-label="Accepted payment methods">
+                  <span title="Cash on Delivery" aria-label="Cash on Delivery">💵</span>
+                  <span title="UPI" aria-label="UPI payment">📱</span>
+                  <span title="Credit/Debit Card" aria-label="Credit or debit card">💳</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><span aria-hidden="true">🍕</span>FoodFlow</div>
+          <p>Your favourite food, delivered fast. Connecting you with the best restaurants in your city.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" aria-label="Careers">Careers</a></li>
+            <li><a href="#" aria-label="Blog">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+            <li><a href="#" aria-label="Terms">Terms of Service</a></li>
+            <li><a href="#" aria-label="Partner">Partner With Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 FoodFlow. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll to top">↑</button>
+  <div id="toast-container" class="toast-container" role="alert" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

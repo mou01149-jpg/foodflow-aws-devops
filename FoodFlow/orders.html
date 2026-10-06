@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="View your FoodFlow order history – track status, items, and delivery details for all past orders." />
+  <title>My Orders – FoodFlow</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo" aria-label="FoodFlow Home">
+          <div class="logo-icon" aria-hidden="true">🍕</div>
+          <span class="highlight">Food</span><span>Flow</span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="orders.html" class="active">Orders</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="cart-btn" id="nav-cart-btn" aria-label="View cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            Cart
+            <span class="cart-count hidden" id="cart-count-nav" aria-label="Items in cart">0</span>
+          </a>
+          <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobile-menu" role="menu">
+        <a href="index.html" role="menuitem">Home</a>
+        <a href="menu.html" role="menuitem">Menu</a>
+        <a href="orders.html" role="menuitem">My Orders</a>
+        <a href="about.html" role="menuitem">About</a>
+        <a href="contact.html" role="menuitem">Contact</a>
+        <a href="cart.html" role="menuitem" style="color:var(--primary);font-weight:700">🛒 Cart</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-label="Orders page header">
+    <h1>My <span style="color:var(--primary-light)">Orders</span></h1>
+    <p>Track and review all your past FoodFlow orders</p>
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span aria-current="page">My Orders</span>
+    </div>
+  </section>
+
+  <!-- ORDERS CONTENT -->
+  <section class="section" aria-label="Order history">
+    <div class="container">
+
+      <!-- STATUS LEGEND -->
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px;padding:16px 20px;background:white;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow-sm)" role="note" aria-label="Order status legend">
+        <span style="font-size:0.82rem;font-weight:700;color:var(--text-medium);margin-right:4px">Status Legend:</span>
+        <span class="order-status-badge status-placed">Order Placed</span>
+        <span class="order-status-badge status-preparing">Preparing</span>
+        <span class="order-status-badge status-outfordelivery">Out for Delivery</span>
+        <span class="order-status-badge status-delivered">Delivered</span>
+      </div>
+
+      <!-- EMPTY STATE -->
+      <div class="cart-empty" id="orders-empty" style="display:none" role="status">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+          <rect x="9" y="3" width="6" height="4" rx="1"/>
+          <line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/>
+        </svg>
+        <h3>No orders yet</h3>
+        <p>You haven't placed any orders yet. Browse our menu and treat yourself!</p>
+        <a href="menu.html" class="btn-primary" id="start-ordering-btn">
+          Start Ordering
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- ORDERS LIST -->
+      <div id="orders-container" aria-label="Your orders" aria-live="polite">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" aria-label="Order again banner">
+    <div class="container">
+      <h2>Hungry again? 🍽️</h2>
+      <p>Order your next meal from hundreds of restaurants on FoodFlow.</p>
+      <a href="menu.html" class="btn-white" id="order-again-btn">Order Again</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><span aria-hidden="true">🍕</span>FoodFlow</div>
+          <p>Your favourite food, delivered fast. Connecting you with the best restaurants in your city.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" aria-label="Careers">Careers</a></li>
+            <li><a href="#" aria-label="Blog">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+            <li><a href="#" aria-label="Terms">Terms of Service</a></li>
+            <li><a href="#" aria-label="Partner">Partner With Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 FoodFlow. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll to top">↑</button>
+  <div id="toast-container" class="toast-container" role="alert" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

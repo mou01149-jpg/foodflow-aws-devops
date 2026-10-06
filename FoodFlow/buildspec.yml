@@ -1,0 +1,111 @@
+version: 0.2
+
+# ============================================================
+# FoodFlow – AWS CodeBuild Build Specification
+# Purpose: Validate HTML/CSS/JS and prepare artifacts
+#          for CodeDeploy to push to EC2 Apache server
+# ============================================================
+
+env:
+  variables:
+    APP_NAME: "FoodFlow"
+    DEPLOY_DIR: "/var/www/html"
+
+phases:
+
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "=== [INSTALL] Setting up build environment for $APP_NAME ==="
+      - node --version
+      - npm --version
+
+  pre_build:
+    commands:
+      - echo "=== [PRE_BUILD] Validating project structure ==="
+      - |
+        REQUIRED_FILES="index.html menu.html cart.html orders.html about.html contact.html style.css script.js appspec.yml"
+        MISSING=0
+        for FILE in $REQUIRED_FILES; do
+          if [ ! -f "$FILE" ]; then
+            echo "ERROR: Required file missing -> $FILE"
+            MISSING=1
+          else
+            echo "OK: $FILE found"
+          fi
+        done
+        if [ $MISSING -eq 1 ]; then
+          echo "Build failed: One or more required files are missing."
+          exit 1
+        fi
+      - echo "=== [PRE_BUILD] Checking scripts directory ==="
+      - ls -la scripts/
+      - |
+        if [ ! -f "scripts/start_server.sh" ]; then
+          echo "ERROR: scripts/start_server.sh is missing"
+          exit 1
+        fi
+      - echo "=== [PRE_BUILD] All required files present. Proceeding... ==="
+
+  build:
+    commands:
+      - echo "=== [BUILD] Preparing $APP_NAME for deployment ==="
+      - echo "Build timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+      - echo "Commit: $CODEBUILD_RESOLVED_SOURCE_VERSION"
+      - |
+        # Create a build info file for deployment auditing
+        cat > build-info.txt << EOF
+        App: $APP_NAME
+        Build ID: $CODEBUILD_BUILD_ID
+        Commit: $CODEBUILD_RESOLVED_SOURCE_VERSION
+        Build Time: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+        EOF
+        echo "Build info written."
+      - echo "=== [BUILD] Making deployment scripts executable ==="
+      - chmod +x scripts/start_server.sh
+      - echo "=== [BUILD] Validating HTML files are well-formed ==="
+      - |
+        HTML_FILES="index.html menu.html cart.html orders.html about.html contact.html"
+        for f in $HTML_FILES; do
+          if grep -q "<!DOCTYPE html>" "$f"; then
+            echo "OK: $f has DOCTYPE declaration"
+          else
+            echo "WARNING: $f missing DOCTYPE"
+          fi
+        done
+      - echo "=== [BUILD] Validating no localhost or hardcoded IP references in production code ==="
+      - |
+        if grep -rn "localhost" index.html menu.html cart.html orders.html about.html contact.html style.css script.js 2>/dev/null; then
+          echo "WARNING: localhost reference found in frontend code. Review before production."
+        else
+          echo "OK: No localhost references in frontend files."
+        fi
+      - echo "=== [BUILD] All validations passed! ==="
+
+  post_build:
+    commands:
+      - echo "=== [POST_BUILD] Build complete! ==="
+      - echo "Files ready for CodeDeploy:"
+      - ls -la *.html *.css *.js *.yml README.md
+      - echo "Build status: SUCCESS"
+
+artifacts:
+  files:
+    - index.html
+    - menu.html
+    - cart.html
+    - orders.html
+    - about.html
+    - contact.html
+    - style.css
+    - script.js
+    - appspec.yml
+    - build-info.txt
+    - scripts/**/*
+  name: FoodFlow-$(date +%Y%m%d%H%M%S)
+  discard-paths: no
+
+cache:
+  paths:
+    - node_modules/**/*

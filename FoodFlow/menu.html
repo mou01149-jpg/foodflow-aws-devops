@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse FoodFlow's full menu – Pizza, Burgers, Biryani, Chinese, Indian, Desserts, and Beverages from top restaurants." />
+  <title>Menu – FoodFlow</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo" aria-label="FoodFlow Home">
+          <div class="logo-icon" aria-hidden="true">🍕</div>
+          <span class="highlight">Food</span><span>Flow</span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html" class="active">Menu</a></li>
+          <li><a href="orders.html">Orders</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="cart-btn" id="nav-cart-btn" aria-label="View cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            Cart
+            <span class="cart-count hidden" id="cart-count-nav" aria-label="Items in cart">0</span>
+          </a>
+          <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobile-menu" role="menu">
+        <a href="index.html" role="menuitem">Home</a>
+        <a href="menu.html" role="menuitem">Menu</a>
+        <a href="orders.html" role="menuitem">My Orders</a>
+        <a href="about.html" role="menuitem">About</a>
+        <a href="contact.html" role="menuitem">Contact</a>
+        <a href="cart.html" role="menuitem" style="color:var(--primary);font-weight:700">🛒 Cart</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-label="Menu page header">
+    <h1>Our <span style="color:var(--primary-light)">Menu</span></h1>
+    <p>Fresh ingredients, amazing flavours — explore 16+ dishes from 6+ restaurants</p>
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span aria-current="page">Menu</span>
+    </div>
+  </section>
+
+  <!-- MENU CONTENT -->
+  <section class="section" aria-label="Food menu">
+    <div class="container">
+
+      <!-- CONTROLS -->
+      <div class="menu-controls" role="search" aria-label="Filter and search food">
+        <div class="search-bar">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <label for="menu-search" class="sr-only">Search food items</label>
+          <input
+            type="text"
+            id="menu-search"
+            placeholder="Search for dishes, restaurants, or cuisines..."
+            aria-label="Search food items"
+          />
+        </div>
+
+        <div class="filter-row">
+          <span class="filter-label">Category:</span>
+          <div class="category-filters" role="group" aria-label="Category filters">
+            <button class="cat-btn active" data-cat="All" aria-pressed="true">All</button>
+            <button class="cat-btn" data-cat="Pizza" aria-pressed="false">🍕 Pizza</button>
+            <button class="cat-btn" data-cat="Burger" aria-pressed="false">🍔 Burger</button>
+            <button class="cat-btn" data-cat="Biryani" aria-pressed="false">🍛 Biryani</button>
+            <button class="cat-btn" data-cat="Chinese" aria-pressed="false">🥡 Chinese</button>
+            <button class="cat-btn" data-cat="Indian" aria-pressed="false">🍲 Indian</button>
+            <button class="cat-btn" data-cat="Desserts" aria-pressed="false">🍮 Desserts</button>
+            <button class="cat-btn" data-cat="Beverages" aria-pressed="false">🥤 Beverages</button>
+          </div>
+          <label for="sort-select" class="sr-only">Sort by</label>
+          <select id="sort-select" class="sort-select" aria-label="Sort food items">
+            <option value="default">Sort: Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="popular">Most Popular</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- RESULTS INFO -->
+      <p class="results-info" id="results-info" aria-live="polite">
+        Showing <span>16</span> items
+      </p>
+
+      <!-- FOOD GRID -->
+      <div class="food-grid" id="menu-food-grid" aria-label="Food items">
+        <!-- Rendered by JS -->
+        <div style="grid-column:1/-1;text-align:center;padding:40px;color:#aaa">Loading menu...</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OFFER BANNER -->
+  <section class="cta-section" aria-label="Offer banner">
+    <div class="container">
+      <h2>🎉 Free Delivery on orders above ₹500!</h2>
+      <p>Add more items to your cart and enjoy free delivery. Discount applies automatically.</p>
+      <a href="cart.html" class="btn-white" id="go-to-cart-btn">Go to Cart</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><span aria-hidden="true">🍕</span>FoodFlow</div>
+          <p>Your favourite food, delivered fast. Connecting you with the best restaurants in your city.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" aria-label="Careers">Careers</a></li>
+            <li><a href="#" aria-label="Blog">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+            <li><a href="#" aria-label="Terms">Terms of Service</a></li>
+            <li><a href="#" aria-label="Partner">Partner With Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 FoodFlow. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll to top">↑</button>
+  <div id="toast-container" class="toast-container" role="alert" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

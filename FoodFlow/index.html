@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FoodFlow – Order delicious food from top restaurants in your city. Fast delivery, great taste." />
+  <title>FoodFlow – Delicious Food Delivered Fast</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo" aria-label="FoodFlow Home">
+          <div class="logo-icon" aria-hidden="true">🍕</div>
+          <span class="highlight">Food</span><span>Flow</span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="orders.html">Orders</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="cart-btn" id="nav-cart-btn" aria-label="View cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            Cart
+            <span class="cart-count hidden" id="cart-count-nav" aria-label="Items in cart">0</span>
+          </a>
+          <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobile-menu" role="menu">
+        <a href="index.html" role="menuitem">Home</a>
+        <a href="menu.html" role="menuitem">Menu</a>
+        <a href="orders.html" role="menuitem">My Orders</a>
+        <a href="about.html" role="menuitem">About</a>
+        <a href="contact.html" role="menuitem">Contact</a>
+        <a href="cart.html" role="menuitem" style="color:var(--primary);font-weight:700">🛒 Cart</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero section">
+    <div class="hero-bg-pattern" aria-hidden="true"></div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot" aria-hidden="true"></span>
+          Now delivering in 200+ cities
+        </div>
+        <h1 class="hero-title">
+          Delicious Food<br/>
+          <span class="gradient-text">Delivered Fast</span>
+        </h1>
+        <p class="hero-description">
+          From biryani to burgers, pizza to desserts — get your favourite meals delivered 
+          hot and fresh right to your doorstep in under 45 minutes.
+        </p>
+        <div class="hero-actions">
+          <a href="menu.html" class="btn-primary" id="order-now-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+            </svg>
+            Order Now
+          </a>
+          <a href="about.html" class="btn-outline">Learn More</a>
+        </div>
+        <div class="hero-stats" role="list">
+          <div class="hero-stat" role="listitem">
+            <span class="number">500+</span>
+            <span class="label">Restaurants</span>
+          </div>
+          <div class="hero-stat" role="listitem">
+            <span class="number">10K+</span>
+            <span class="label">Happy Users</span>
+          </div>
+          <div class="hero-stat" role="listitem">
+            <span class="number">45min</span>
+            <span class="label">Avg Delivery</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-search-box" aria-label="Search food">
+        <h3>What are you craving?</h3>
+        <div class="search-input-wrap">
+          <label for="hero-search-input" class="sr-only">Search food</label>
+          <input
+            type="text"
+            id="hero-search-input"
+            placeholder="Search for pizza, biryani, burger..."
+            aria-label="Search food"
+          />
+          <button id="hero-search-btn" aria-label="Search">Search</button>
+        </div>
+        <div class="quick-tags" aria-label="Popular searches">
+          <span>Popular:</span>
+          <span class="quick-tag" tabindex="0" role="button">Pizza</span>
+          <span class="quick-tag" tabindex="0" role="button">Biryani</span>
+          <span class="quick-tag" tabindex="0" role="button">Burger</span>
+          <span class="quick-tag" tabindex="0" role="button">Chinese</span>
+          <span class="quick-tag" tabindex="0" role="button">Desserts</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR FOOD -->
+  <section class="section" aria-labelledby="popular-food-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Popular Today</span>
+        <h2 class="section-title" id="popular-food-heading">
+          Most Loved <span class="accent">Dishes</span>
+        </h2>
+        <p class="section-subtitle">Handpicked favourites ordered by thousands of food lovers every day.</p>
+      </div>
+      <div class="food-grid" id="home-food-grid" aria-label="Popular food items">
+        <!-- Rendered by JS -->
+        <div style="grid-column:1/-1;text-align:center;padding:40px;color:#aaa">Loading delicious food...</div>
+      </div>
+      <div class="text-center mt-40">
+        <a href="menu.html" class="btn-primary" id="view-full-menu-btn">
+          View Full Menu
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESTAURANTS -->
+  <section class="section section-alt" aria-labelledby="restaurants-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Top Picks</span>
+        <h2 class="section-title" id="restaurants-heading">
+          Popular <span class="accent">Restaurants</span>
+        </h2>
+        <p class="section-subtitle">Partner restaurants that bring you restaurant-quality meals to your home.</p>
+      </div>
+      <div class="restaurant-grid" id="home-restaurant-grid" aria-label="Popular restaurants">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section" aria-labelledby="why-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why FoodFlow?</span>
+        <h2 class="section-title" id="why-heading">
+          We Make Food Delivery <span class="accent">Effortless</span>
+        </h2>
+        <p class="section-subtitle">Everything you need for a great food delivery experience — all in one place.</p>
+      </div>
+      <div class="features-grid" role="list">
+        <article class="feature-card" role="listitem">
+          <div class="feature-icon" aria-hidden="true">⚡</div>
+          <h3>Lightning Fast Delivery</h3>
+          <p>Our smart routing delivers your food hot and fresh in under 45 minutes, guaranteed.</p>
+        </article>
+        <article class="feature-card" role="listitem">
+          <div class="feature-icon" aria-hidden="true">🏪</div>
+          <h3>500+ Restaurants</h3>
+          <p>Choose from hundreds of restaurants across multiple cuisines to satisfy any craving.</p>
+        </article>
+        <article class="feature-card" role="listitem">
+          <div class="feature-icon" aria-hidden="true">🔒</div>
+          <h3>Safe & Hygienic</h3>
+          <p>All partner restaurants follow strict hygiene protocols. Your safety is our priority.</p>
+        </article>
+        <article class="feature-card" role="listitem">
+          <div class="feature-icon" aria-hidden="true">💳</div>
+          <h3>Easy Payments</h3>
+          <p>Pay via UPI, card, or cash on delivery. Multiple options for your convenience.</p>
+        </article>
+        <article class="feature-card" role="listitem">
+          <div class="feature-icon" aria-hidden="true">📱</div>
+          <h3>Real-time Tracking</h3>
+          <p>Track your order from the restaurant kitchen to your front door in real time.</p>
+        </article>
+        <article class="feature-card" role="listitem">
+          <div class="feature-icon" aria-hidden="true">🎁</div>
+          <h3>Exclusive Offers</h3>
+          <p>Enjoy deals, discounts, and free delivery on every order above ₹500.</p>
+        </article>
+        <article class="feature-card" role="listitem">
+          <div class="feature-icon" aria-hidden="true">🌟</div>
+          <h3>Quality Assured</h3>
+          <p>Every restaurant is rated and reviewed by our community to ensure quality.</p>
+        </article>
+        <article class="feature-card" role="listitem">
+          <div class="feature-icon" aria-hidden="true">🎧</div>
+          <h3>24/7 Support</h3>
+          <p>Round-the-clock customer support to resolve any issues instantly.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-section" aria-label="Call to action">
+    <div class="container">
+      <h2>Ready to order your favourite food?</h2>
+      <p>Join 10,000+ happy users who trust FoodFlow for their daily meals.</p>
+      <a href="menu.html" class="btn-white" id="cta-order-btn">
+        Browse Menu
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section section-alt" aria-labelledby="reviews-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Customer Love</span>
+        <h2 class="section-title" id="reviews-heading">
+          What Our Customers <span class="accent">Say</span>
+        </h2>
+        <p class="section-subtitle">Real reviews from real foodies who love FoodFlow.</p>
+      </div>
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 stars">★★★★★</div>
+          <p class="review-text">"Best food delivery app I've ever used! The biryani from Biryani Express arrives piping hot every single time. FoodFlow is my go-to for all cravings!"</p>
+          <div class="review-author">
+            <img
+              class="review-avatar"
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80"
+              alt="Priya Sharma"
+              loading="lazy"
+            />
+            <div>
+              <div class="review-author-name">Priya Sharma</div>
+              <div class="review-author-tag">Food Blogger · Mumbai</div>
+            </div>
+          </div>
+        </article>
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 stars">★★★★★</div>
+          <p class="review-text">"The interface is clean, ordering is super fast, and my pizza always comes on time. The free delivery above ₹500 is a great deal. Highly recommended!"</p>
+          <div class="review-author">
+            <img
+              class="review-avatar"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
+              alt="Rahul Kumar"
+              loading="lazy"
+            />
+            <div>
+              <div class="review-author-name">Rahul Kumar</div>
+              <div class="review-author-tag">Student · Hyderabad</div>
+            </div>
+          </div>
+        </article>
+        <article class="review-card">
+          <div class="review-stars" aria-label="4 stars">★★★★☆</div>
+          <p class="review-text">"I order lunch every day from FoodFlow. The variety is amazing — from healthy salads to indulgent desserts. The order tracking is spot on!"</p>
+          <div class="review-author">
+            <img
+              class="review-avatar"
+              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80"
+              alt="Ananya Patel"
+              loading="lazy"
+            />
+            <div>
+              <div class="review-author-name">Ananya Patel</div>
+              <div class="review-author-tag">Software Engineer · Bengaluru</div>
+            </div>
+          </div>
+        </article>
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 stars">★★★★★</div>
+          <p class="review-text">"The customer support is outstanding. When my order was delayed, they instantly resolved the issue with a discount. That's real service!"</p>
+          <div class="review-author">
+            <img
+              class="review-avatar"
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80"
+              alt="Vikram Singh"
+              loading="lazy"
+            />
+            <div>
+              <div class="review-author-name">Vikram Singh</div>
+              <div class="review-author-tag">Entrepreneur · Delhi</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP DOWNLOAD -->
+  <section class="app-section" aria-labelledby="app-heading">
+    <div class="container">
+      <div class="app-content">
+        <div class="app-text">
+          <span class="section-tag">Coming Soon</span>
+          <h2 id="app-heading" style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--text-dark);margin:12px 0 14px">
+            FoodFlow on Your <span style="color:var(--primary)">Mobile</span>
+          </h2>
+          <p>Our mobile app is coming soon with GPS tracking, instant notifications, and exclusive app-only deals. Stay tuned!</p>
+          <div class="app-badges">
+            <div class="app-badge" role="button" aria-label="Download on App Store">
+              <span class="badge-icon" aria-hidden="true">🍎</span>
+              <div class="badge-text">
+                <span class="sub">Download on the</span>
+                <span class="name">App Store</span>
+              </div>
+            </div>
+            <div class="app-badge" role="button" aria-label="Get it on Google Play">
+              <span class="badge-icon" aria-hidden="true">▶</span>
+              <div class="badge-text">
+                <span class="sub">Get it on</span>
+                <span class="name">Google Play</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <img
+            src="https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=500&q=80"
+            alt="FoodFlow mobile app"
+            style="border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,0.15);max-height:380px;width:100%;object-fit:cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span aria-hidden="true">🍕</span>FoodFlow
+          </div>
+          <p>Your favourite food, delivered fast. FoodFlow connects you with the best restaurants in your city for a seamless dining experience at home.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" aria-label="Careers page">Careers</a></li>
+            <li><a href="#" aria-label="Blog page">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#" aria-label="Privacy policy">Privacy Policy</a></li>
+            <li><a href="#" aria-label="Terms of service">Terms of Service</a></li>
+            <li><a href="#" aria-label="Partner with us">Partner With Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 FoodFlow. All rights reserved. Made with ❤️ in India.</span>
+        <div class="footer-bottom-links">
+          <a href="#" aria-label="Privacy Policy">Privacy</a>
+          <a href="#" aria-label="Terms">Terms</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll to top">↑</button>
+
+  <div id="toast-container" class="toast-container" role="alert" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
