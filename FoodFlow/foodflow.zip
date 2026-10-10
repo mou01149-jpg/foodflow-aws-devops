@@ -1,0 +1,13 @@
+FoodFlow.zip
+│
+├── index.html          ← your FoodFlow homepage code
+├── style.css           ← website design
+├── script.js           ← website JavaScript
+├── menu.html           ← if you have it
+├── cart.html           ← if you have it
+├── checkout.html       ← if you have it
+├── appspec.yml         ← CodeDeploy configuration
+└── scripts/
+    ├── install_dependencies.sh
+    ├── start_server.sh
+    └── stop_server.sh
