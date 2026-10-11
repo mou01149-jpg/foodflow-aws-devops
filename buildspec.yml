@@ -1,21 +1,52 @@
 version: 0.2
 
+# ─────────────────────────────────────────────────────────────────────────────
+# FoodFlow – AWS CodeBuild Specification
+# Builds the Docker image and pushes it to Amazon ECR.
+#
+# Required CodeBuild environment variables:
+#   AWS_DEFAULT_REGION  – e.g. us-east-1
+#   AWS_ACCOUNT_ID      – your 12-digit AWS account ID
+#   ECR_REPO_NAME       – ECR repository name, e.g. foodflow
+# ─────────────────────────────────────────────────────────────────────────────
+
+env:
+  variables:
+    IMAGE_TAG: "latest"
+
 phases:
   install:
+    runtime-versions:
+      docker: 20
     commands:
       - echo "Installing dependencies..."
+
   pre_build:
     commands:
-      - echo "Starting pre-build phase..."
+      - echo "Logging in to Amazon ECR..."
+      - IMAGE_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME"
+      - COMMIT_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c1-7)
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com"
+      - echo "Pre-build complete."
+
   build:
     commands:
-      - echo "Building FoodFlow application..."
-      - echo "Checking project files..."
-      - ls -la
+      - echo "Building Docker image..."
+      - docker build -t $IMAGE_URI:$COMMIT_TAG -t $IMAGE_URI:latest .
+      - echo "Build complete."
+
   post_build:
     commands:
-      - echo "FoodFlow build completed successfully!"
+      - echo "Pushing Docker image to ECR..."
+      - docker push $IMAGE_URI:$COMMIT_TAG
+      - docker push $IMAGE_URI:latest
+      - echo "Writing imagedefinitions.json for ECS deployment..."
+      - printf '[{"name":"%s","imageUri":"%s"}]' "$ECR_REPO_NAME" "$IMAGE_URI:$COMMIT_TAG" > imagedefinitions.json
+      - cat imagedefinitions.json
+      - echo "FoodFlow build and push completed successfully!"
 
 artifacts:
   files:
+    - imagedefinitions.json
+    - appspec.yml
     - '**/*'

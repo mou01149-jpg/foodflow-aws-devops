@@ -1,0 +1,57 @@
+name: FoodFlow CI-CD Deployment
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to AWS EC2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout GitHub repository
+        uses: actions/checkout@v4
+
+      - name: Validate website files
+        run: |
+          test -f index.html
+          echo "FoodFlow website files validated"
+
+      - name: Package website
+        run: |
+          tar \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude=scripts \
+            --exclude=appspec.yml \
+            --exclude=buildspec.yml \
+            --exclude=README.md \
+            --exclude=foodflow.zip \
+            -czf foodflow.tar.gz .
+
+      - name: Copy website to EC2
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "foodflow.tar.gz"
+          target: "/home/ec2-user/"
+
+      - name: Deploy website
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            mkdir -p /tmp/foodflow-deploy
+            tar -xzf /home/ec2-user/foodflow.tar.gz \
+              -C /tmp/foodflow-deploy
+            sudo cp -r /tmp/foodflow-deploy/. /var/www/html/
+            sudo systemctl restart httpd
+            rm -f /home/ec2-user/foodflow.tar.gz
+            echo "FoodFlow deployment completed"
