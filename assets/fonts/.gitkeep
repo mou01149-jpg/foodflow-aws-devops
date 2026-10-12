@@ -1,0 +1,9 @@
+/* FoodFlow – assets/fonts placeholder
+ * Drop custom web fonts here (.woff2 preferred).
+ * Reference in style.css:
+ *   @font-face {
+ *     font-family: 'FoodFlow';
+ *     src: url('../assets/fonts/foodflow.woff2') format('woff2');
+ *     font-display: swap;
+ *   }
+ */

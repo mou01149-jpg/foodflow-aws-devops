@@ -1,0 +1,15 @@
+/* =============================================================
+   FoodFlow – assets/css/vendor.css
+   Third-party CSS bundled locally for S3 hosting
+   (avoids CDN dependency; improves offline/caching reliability)
+   =============================================================
+
+   Add CDN stylesheets here, e.g.:
+     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+   For full offline capability, download the font files into
+   assets/fonts/ and declare @font-face rules here instead.
+*/
+
+/* Inter font – loaded from Google Fonts CDN */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap');

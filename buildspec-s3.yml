@@ -1,0 +1,71 @@
+version: 0.2
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FoodFlow – AWS CodeBuild: Static Site → S3 + CloudFront
+#
+# Required CodeBuild environment variables:
+#   AWS_DEFAULT_REGION    – e.g. us-east-1
+#   S3_BUCKET             – e.g. foodflow-static-prod
+#   CLOUDFRONT_DIST_ID    – CloudFront distribution ID (optional)
+# ─────────────────────────────────────────────────────────────────────────────
+
+env:
+  variables:
+    NODE_ENV: "production"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo "Installing dependencies..."
+      - npm ci --omit=dev
+
+  pre_build:
+    commands:
+      - echo "Pre-build checks..."
+      - COMMIT_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c1-7)
+      - echo "Commit = $COMMIT_TAG"
+      - ls -la FoodFlow/index.html FoodFlow/style.css FoodFlow/script.js
+
+  build:
+    commands:
+      - echo "Assembling dist/ folder..."
+      - bash scripts/build.sh
+      - echo "dist/ contents:"
+      - find dist/ -type f | sort
+
+  post_build:
+    commands:
+      - echo "Syncing assets (immutable cache) to s3://$S3_BUCKET ..."
+      - |
+        aws s3 sync dist/ s3://$S3_BUCKET/ \
+          --region $AWS_DEFAULT_REGION \
+          --delete \
+          --exclude "*.html" \
+          --exclude "build-info.json" \
+          --cache-control "public,max-age=31536000,immutable"
+      - echo "Syncing HTML (no-cache) to s3://$S3_BUCKET ..."
+      - |
+        aws s3 sync dist/ s3://$S3_BUCKET/ \
+          --region $AWS_DEFAULT_REGION \
+          --exclude "*" \
+          --include "*.html" \
+          --include "build-info.json" \
+          --cache-control "no-cache,no-store,must-revalidate" \
+          --content-type "text/html; charset=utf-8"
+      - |
+        if [ -n "$CLOUDFRONT_DIST_ID" ]; then
+          echo "Invalidating CloudFront $CLOUDFRONT_DIST_ID ..."
+          aws cloudfront create-invalidation \
+            --distribution-id $CLOUDFRONT_DIST_ID \
+            --paths "/*"
+        fi
+      - echo "FoodFlow S3 deployment complete!"
+
+artifacts:
+  files:
+    - dist/**/*
+    - build-info.json
+  base-directory: dist
+  discard-paths: no
