@@ -3,4 +3,4 @@ version: 0.2
 phases:
   build:
     commands:
-      - aws amplify start-job --app-id "$AMPLIFY_APP_ID" --main "$AMPLIFY_BRANCH" --job-type RELEASE
+      - aws amplify start-job --app-id "$AMPLIFY_APP_ID" --d37x2f8e7np0h9 "$AMPLIFY_BRANCH" --main
